@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Link Bucin Generator - Kirim Ke Pacar/Crush ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 30px;
+        }
+        
+        .generator-section {
+            background: #fff5f7;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px dashed #ff6b6b;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ffafbd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(45deg, #ff5252, #ff7b7b);
+        }
+        
+        .result-box {
+            background: #e8f4fc;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 2px solid #4fc3f7;
+            display: none;
+        }
+        
+        .result-box.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .link-box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #ff6b6b;
+            margin: 15px 0;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .share-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp { background: #25D366; }
+        .telegram { background: #0088cc; }
+        .instagram { background: linear-gradient(45deg, #405DE6, #833AB4); }
+        .facebook { background: #1877F2; }
+        .copy { background: #607D8B; }
+        
+        .preview-section {
+            background: #f0f8ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 2px dashed #4fc3f7;
+        }
+        
+        .preview-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .heart {
+            font-size: 48px;
+            color: #ff6b6b;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .templates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .template-btn {
+            background: white;
+            border: 2px solid #ffafbd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .template-btn:hover {
+            background: #fff5f7;
+            border-color: #ff6b6b;
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .love-calculator {
+            background: #fff5f7;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .love-result {
+            font-size: 2em;
+            color: #ff6b6b;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .main-content {
+                padding: 15px;
+            }
+            
+            .share-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💖 LINK BUCIN GENERATOR 💖</h1>
+            <p>Buat Link Romantis untuk Pacar/Crush Kamu</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="generator-section">
+                <h2 style="color: #ff6b6b; margin-bottom: 20px;">✨ Buat Link Bucin Custom</h2>
+                
+                <div class="input-group">
+                    <label>Nama Kamu:</label>
+                    <input type="text" id="yourName" placeholder="Masukkan nama kamu" value="Sayang">
+                </div>
+                
+                <div class="input-group">
+                    <label>Nama Pacar/Crush:</label>
+                    <input type="text" id="partnerName" placeholder="Masukkan nama pacar/crush" value="Kekasih">
+                </div>
+                
+                <div class="input-group">
+                    <label>Pesan Romantis:</label>
+                    <textarea id="romanticMessage" placeholder="Tulis pesan romantis disini...">Aku sayang kamu lebih dari apapun di dunia ini ❤️</textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Pilih Tema:</label>
+                    <select id="theme">
+                        <option value="romantic">💕 Romantic Pink</option>
+                        <option value="love">❤️ Classic Love</option>
+                        <option value="cute">🐰 Cute Animals</option>
+                        <option value="elegant">🌹 Elegant Rose</option>
+                        <option value="sky">🌌 Starry Sky</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label>Tambahkan GIF:</label>
+                    <select id="gif">
+                        <option value="heart">💖 Heart Animation</option>
+                        <option value="kiss">😘 Kiss GIF</option>
+                        <option value="hug">🤗 Hug GIF</option>
+                        <option value="couple">👫 Couple GIF</option>
+                        <option value="lovebirds">🐦 Lovebirds GIF</option>
+                    </select>
+                </div>
+                
+                <button class="btn" onclick="generateLink()" style="width: 100%;">
+                    🎯 GENERATE LINK BUCIN
+                </button>
+            </div>
+            
+            <div class="result-box" id="resultBox">
+                <h3 style="color: #4fc3f7; margin-bottom: 15px;">✨ Link Bucin Kamu Siap!</h3>
+                
+                <p>Salin link berikut dan kirim ke pacar/crush kamu:</p>
+                
+                <div class="link-box" id="generatedLink">
+                    Loading...
+                </div>
+                
+                <div class="share-buttons">
+                    <a href="#" class="share-btn whatsapp" onclick="shareWhatsApp()">
+                        📱 WhatsApp
+                    </a>
+                    <a href="#" class="share-btn telegram" onclick="shareTelegram()">
+                        📨 Telegram
+                    </a>
+                    <a href="#" class="share-btn instagram" onclick="shareInstagram()">
+                        📸 Instagram
+                    </a>
+                    <a href="#" class="share-btn facebook" onclick="shareFacebook()">
+                        👍 Facebook
+                    </a>
+                    <button class="share-btn copy" onclick="copyLink()">
+                        📋 Copy Link
+                    </button>
+                </div>
+                
+                <p style="margin-top: 15px; color: #666; font-size: 0.9em;">
+                    Link akan aktif selama 30 hari. Klik link untuk melihat surprise!
+                </p>
+            </div>
+            
+            <div class="preview-section">
+                <h3 style="color: #4fc3f7; margin-bottom: 15px;">👀 Preview Pesan Kamu:</h3>
+                
+                <div class="preview-box" id="previewBox">
+                    <div class="heart">💖</div>
+                    <h2 id="previewTitle">Untuk [Nama Pacar]</h2>
+                    <p id="previewMessage">Pesan romantis akan muncul disini...</p>
+                    <p style="margin-top: 20px; color: #666;">From: <span id="previewFrom">[Nama Kamu]</span></p>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h4>💌 Template Cepat:</h4>
+                    <div class="templates">
+                        <div class="template-btn" onclick="loadTemplate(1)">
+                            "Aku sayang kamu"
+                        </div>
+                        <div class="template-btn" onclick="loadTemplate(2)">
+                            "Kamu special banget"
+                        </div>
+                        <div class="template-btn" onclick="loadTemplate(3)">
+                            "I love you 3000"
+                        </div>
+                        <div class="template-btn" onclick="loadTemplate(4)">
+                            "Jadian sama aku?"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="love-calculator">
+                <h3 style="color: #ff6b6b; margin-bottom: 15px;">💑 Kalkulator Cinta</h3>
+                
+                <div class="input-group">
+                    <label>Nama Pertama:</label>
+                    <input type="text" id="name1" placeholder="Nama kamu">
+                </div>
+                
+                <div class="input-group">
+                    <label>Nama Kedua:</label>
+                    <input type="text" id="name2" placeholder="Nama doi">
+                </div>
+                
+                <button class="btn" onclick="calculateLove()" style="width: 100%;">
+                    💖 HITUNG PERSENTASE CINTA
+                </button>
+                
+                <div class="love-result" id="loveResult"></div>
+                
+                <p id="loveComment" style="text-align: center; color: #666;"></p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Made with ❤️ by DARK AI | Rafa Hosting</p>
+            <p>© 2024 Link Bucin Generator v2.0 - Untuk tujuan romantis semata</p>
+        </div>
+    </div>
+
+    <script>
+        // Update preview in real-time
+        document.getElementById('yourName').addEventListener('input', updatePreview);
+        document.getElementById('partnerName').addEventListener('input', updatePreview);
+        document.getElementById('romanticMessage').addEventListener('input', updatePreview);
+        
+        function updatePreview() {
+            const yourName = document.getElementById('yourName').value || '[Nama Kamu]';
+            const partnerName = document.getElementById('partnerName').value || '[Nama Pacar]';
+            const message = document.getElementById('romanticMessage').value || 'Pesan romantis akan muncul disini...';
+            
+            document.getElementById('previewTitle').textContent = `Untuk ${partnerName}`;
+            document.getElementById('previewMessage').textContent = message;
+            document.getElementById('previewFrom').textContent = yourName;
+            
+            // Update theme preview
+            const theme = document.getElementById('theme').value;
+            const previewBox = document.getElementById('previewBox');
+            
+            previewBox.style.background = getThemeBackground(theme);
+            previewBox.style.color = getThemeColor(theme);
+        }
+        
+        function getThemeBackground(theme) {
+            const themes = {
+                'romantic': 'linear-gradient(135deg, #ffafbd, #ffc3a0)',
+                'love': 'linear-gradient(135deg, #ff6b6b, #ff8e8e)',
+                'cute': 'linear-gradient(135deg, #a1c4fd, #c2e9fb)',
+                'elegant': 'linear-gradient(135deg, #fad0c4, #ffd1ff)',
+                'sky': 'linear-gradient(135deg, #667eea, #764ba2)'
+            };
+            return themes[theme] || themes.romantic;
+        }
+        
+        function getThemeColor(theme) {
+            return theme === 'sky' ? 'white' : '#333';
+        }
+        
+        // Load templates
+        function loadTemplate(templateNumber) {
+            const templates = {
+                1: {
+                    message: "Aku sayang kamu lebih dari apapun di dunia ini. Setiap hari bersamamu adalah anugerah terindah yang pernah kumiliki. ❤️",
+                    yourName: "Sayang",
+                    partnerName: "Kekasihku"
+                },
+                2: {
+                    message: "Kamu itu special banget buat aku. Gak ada yang bisa gantikan posisi kamu di hati ini. Aku bersyukur banget punya kamu. 💕",
+                    yourName: "Yang selalu sayang",
+                    partnerName: "Special Person"
+                },
+                3: {
+                    message: "I love you 3000! Lebih dari Tony Stark ke Morgan Stark. Kamu adalah bagian terpenting dalam hidupku. 😘",
+                    yourName: "Your Stark",
+                    partnerName: "My Morgan"
+                },
+                4: {
+                    message: "Aku punya pertanyaan penting nih... Mau gak jadi pacar aku? Aku janji bakal jaga perasaan kamu sebaik-baiknya. 💍",
+                    yourName: "Yang pengen jadian",
+                    partnerName: "Calon Pacar"
+                }
+            };
+            
+            const template = templates[templateNumber];
+            if (template) {
+                document.getElementById('romanticMessage').value = template.message;
+                document.getElementById('yourName').value = template.yourName;
+                document.getElementById('partnerName').value = template.partnerName;
+                updatePreview();
+            }
+        }
+        
+        // Generate link
+        function generateLink() {
+            const yourName = encodeURIComponent(document.getElementById('yourName').value || 'Sayang');
+            const partnerName = encodeURIComponent(document.getElementById('partnerName').value || 'Kekasih');
+            const message = encodeURIComponent(document.getElementById('romanticMessage').value);
+            const theme = document.getElementById('theme').value;
+            const gif = document.getElementById('gif').value;
+            
+            // Generate unique ID
+            const uniqueId = 'bucin_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            
+            // Create virtual link
+            const baseUrl = 'https://linkbucin.darkai.page/view';
+            const link = `${baseUrl}?id=${uniqueId}&from=${yourName}&to=${partnerName}&msg=${message}&theme=${theme}&gif=${gif}`;
+            
+            // Display link
+            document.getElementById('generatedLink').innerHTML = `
+                <strong>${link}</strong><br><br>
+                <small>Link ini akan membuka halaman romantis khusus untuk ${decodeURIComponent(partnerName)}</small>
+            `;
+            
+            // Show result box
+            document.getElementById('resultBox').classList.add('active');
+            
+            // Save to localStorage
+            localStorage.setItem('lastGeneratedLink', link);
+            
+            // Scroll to result
+            document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Share functions
+        function shareWhatsApp() {
+            const link = document.getElementById('generatedLink').textContent;
+            const text = `Hai! Aku buatkan link spesial buat kamu 💖\n\n${link}\n\nBuka ya sayang! ❤️`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+        
+        function shareTelegram() {
+            const link = document.getElementById('generatedLink').textContent;
+            const text = `💌 Ada surprise buat kamu! 💌\n\n${link}\n\nLove you! ❤️`;
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent(text)}`, '_blank');
+        }
+        
+        function shareInstagram() {
+            alert('Copy link terlebih dahulu, lalu paste di DM Instagram! ❤️');
+            copyLink();
+        }
+        
+        function shareFacebook() {
+            const link = document.getElementById('generatedLink').textContent;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`, '_blank');
+        }
+        
+        function copyLink() {
+            const link = document.getElementById('generatedLink').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('✅ Link berhasil disalin! Sekarang bisa dikirim ke pacar/crush kamu!');
+            });
+        }
+        
+        // Love calculator
+        function calculateLove() {
+            const name1 = document.getElementById('name1').value.trim().toLowerCase();
+            const name2 = document.getElementById('name2').value.trim().toLowerCase();
+            
+            if (!name1 || !name2) {
+                alert('Masukkan kedua nama dulu ya! 💖');
+                return;
+            }
+            
+            // Simple "love calculation" algorithm
+            let loveScore = 0;
+            
+            // Add points based on name length
+            loveScore += (name1.length + name2.length) * 2;
+            
+            // Add points for matching letters
+            const letters = 'abcdefghijklmnopqrstuvwxyz';
+            for (let letter of letters) {
+                if (name1.includes(letter) && name2.includes(letter)) {
+                    loveScore += 5;
+                }
+            }
+            
+            // Add random factor (for fun)
+            loveScore += Math.floor(Math.random() * 30);
+            
+            // Cap at 100%
+            loveScore = Math.min(loveScore, 100);
+            
+            // Display result
+            document.getElementById('loveResult').textContent = `${loveScore}%`;
+            
+            // Add comment
+            const comments = [
+                "Wah! Kalian cocok banget! 💖",
+                "Cinta kalian sangat kuat! ❤️",
+                "Pasangan yang serasi! 💕",
+                "Lanjutkan hubungan kalian! 😊",
+                "Ada chemistry yang bagus! 💑",
+                "Sangat berpotensi! 🌟",
+                "Jodoh dari surga! 👼",
+                "Match made in heaven! 💒"
+            ];
+            
+            const comment = comments[Math.floor(loveScore / 15)] || comments[0];
+            document.getElementById('loveComment').textContent = comment;
+            
+            // Animate result
+            const resultElement = document.getElementById('loveResult');
+            resultElement.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                resultElement.style.transform = 'scale(1)';
+            }, 300);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePreview();
+            
+            // Load last generated link if exists
+            const lastLink = localStorage.getItem('lastGeneratedLink');
+            if (lastLink) {
+                document.getElementById('generatedLink').textContent = lastLink;
+            }
+        });
+        
+        // Easter egg
+        let clickCount = 0;
+        const heart = document.querySelector('.heart');
+        heart.addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 5) {
+                heart.textContent = '💥';
+                heart.style.animation = 'none';
+                setTimeout(() => {
+                    heart.textContent = '💖';
+                    heart.style.animation = 'heartbeat 1.5s infinite';
+                }, 1000);
+                alert('🎉 Kamu menemukan easter egg! Cinta itu indah! 💖');
+                clickCount = 0;
+            }
+        });
+    </script>
+</body>
+</html>
